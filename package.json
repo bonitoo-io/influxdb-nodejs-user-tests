@@ -1,0 +1,19 @@
+{
+  "name": "influxdb-nodejs-user-tests",
+  "version": "1.0.0",
+  "description": "Testing influxdb-nodejs",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "keywords": [
+    "Test",
+    "Private",
+    "NoDistribute"
+  ],
+  "author": "KK",
+  "license": "ISC",
+  "dependencies": {
+    "influxdb-nodejs": "file:///home/karl/bonitoo/prjs/influxdb-nodejs/influxdb-nodejs-1.0.0.tgz"
+  }
+}
