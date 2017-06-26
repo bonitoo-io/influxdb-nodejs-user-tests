@@ -53,12 +53,15 @@ describe('InfluxDB.Connect', function(){
                       fields: [{key: 'kwatts', value: 48.9}]
                   };
 
-                  connection.write([dataPoint1, dataPoint2]).catch((e) => {
+                  connection.write([dataPoint1, dataPoint2]).then(() => {
+                      // for now do nothing
+                  }).catch((e) => {
                       done(e);
                   });
                   connection.flush().then(() => {
                       done()
                   }).catch((e) => {
+                      console.log('ERROR ON FLUSH')
                       done(e);
                   });
 
@@ -87,16 +90,50 @@ describe('InfluxDB.Connect', function(){
               connection.connect().then((result) => {
                   connection.executeQuery('select * from power').then((result) => {
                       console.log(result)
+                      done()
                   }).catch((e) => {
-                      console.log('error', e)
+                      console.log('QUERY EXEC ERROR')
+                      done(e)
                   })
               }).catch((e) => {
                   console.log('error', e)
+                  done(e)
               });
 
 
          })
 
     });
+
+    describe('#Drop datapoints', function(){
+
+         it('should drop datapoints from the database', function(done){
+
+             let connection = new InfluxDB.Connection({
+
+                  database: 'test1'
+
+              })
+
+
+              connection.connect().then((result) => {
+                    connection.executeQuery('drop measurement power').then((result) => {
+                        done()
+                    }).catch((e) => {
+                        console.log('DROP QUERY EXEC ERROR')
+                        done(e)
+                    })
+  
+              }).catch((e) => {
+                    console.log('error',e)
+                    done(e)
+              });
+
+
+
+         })
+
+    });
+
 
 });
