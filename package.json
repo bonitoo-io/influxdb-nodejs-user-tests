@@ -15,5 +15,8 @@
   "license": "ISC",
   "dependencies": {
     "influxdb-nodejs": "file:///home/karl/bonitoo/prjs/influxdb-nodejs/influxdb-nodejs-1.0.0.tgz"
+  },
+  "devDependencies": {
+    "mocha": "^3.4.2"
   }
 }
