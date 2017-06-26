@@ -4,7 +4,7 @@
   "description": "Testing influxdb-nodejs",
   "main": "index.js",
   "scripts": {
-    "test": "mocha"
+    "test": "mocha --full-trace"
   },
   "keywords": [
     "Test",
